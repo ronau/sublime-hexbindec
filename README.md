@@ -3,16 +3,21 @@
 
 This package provides ability to inplace change the base of numbers in [SublimeText 3 Editor][1].
 
+**Modifications done in this fork of original repo:**
+- Added function to convert hex values into UTC timestamp strings
+- changed keyboard shortcuts
+
 ## Usage
 1. Move the cursor over a number or select one or more numbers.
 2. Press one of the following key combinations to convert the numbers.
 
-	- <kbd>Ctrl+shift+b, ctrl+shift+d</kbd> binary to decimal
-	- <kbd>Ctrl+shift+b, ctrl+shift+h</kbd> binary to hexadecimal
-	- <kbd>Ctrl+shift+d, ctrl+shift+b</kbd> binary to decimal
-	- <kbd>Ctrl+shift+d, ctrl+shift+h</kbd> binary to hexadecimal
-	- <kbd>Ctrl+shift+h, ctrl+shift+b</kbd> hexadecimal to binary
-	- <kbd>Ctrl+shift+h, ctrl+shift+d</kbd> hexadecimal to decimal
+	- <kbd>Ctrl+shift+c, Ctrl+shift+b, ctrl+shift+d</kbd> binary to decimal
+	- <kbd>Ctrl+shift+c, Ctrl+shift+b, ctrl+shift+h</kbd> binary to hexadecimal
+	- <kbd>Ctrl+shift+c, Ctrl+shift+d, ctrl+shift+b</kbd> binary to decimal
+	- <kbd>Ctrl+shift+c, Ctrl+shift+d, ctrl+shift+h</kbd> binary to hexadecimal
+	- <kbd>Ctrl+shift+c, Ctrl+shift+h, ctrl+shift+b</kbd> hexadecimal to binary
+	- <kbd>Ctrl+shift+c, Ctrl+shift+h, ctrl+shift+d</kbd> hexadecimal to decimal
+	- **<kbd>Ctrl+shift+c, Ctrl+shift+h, ctrl+shift+u</kbd> hexadecimal to UTC timestamp string**
 
 The commands are available in
 - command pallet under `Convert Number: ...`
