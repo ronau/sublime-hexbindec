@@ -24,6 +24,10 @@
         "command": "hex_to_bin"
     },
     {
+        "caption": "Convert Number: Hex to UTC Timestamp",
+        "command": "hex_to_utc_timestamp_string"
+    },
+    {
         "caption": "Convert Number: Exp to Dec",
         "command": "exp_to_dec"
     },

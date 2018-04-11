@@ -10,7 +10,8 @@
             {"command": "bin_to_dec"},
             {"command": "bin_to_hex"},
             {"command": "hex_to_dec"},
-            {"command": "hex_to_bin"}
+            {"command": "hex_to_bin"},
+            {"caption": "Hex to UTC Timestamp", "command": "hex_to_utc_timestamp_string"}
         ]
     }
 ]

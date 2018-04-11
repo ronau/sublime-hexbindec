@@ -2,6 +2,7 @@ import re
 
 import sublime
 import sublime_plugin
+from datetime import datetime
 
 # ============================================================================
 # CONFIGURATION DESCRIPTION
@@ -233,6 +234,51 @@ class HexToDecCommand(sublime_plugin.TextCommand):
         if num_skip > 0:
             sublime.status_message(
                 "Skipped %d invalid hexadecimal value(s)!" % num_skip)
+
+
+
+
+class HexToUtcTimestampStringCommand(sublime_plugin.TextCommand):
+
+    def run(self, edit):
+        num_skip = 0
+        view = self.view
+        # read settings
+        r = load_pattern(view, 'convert_src_hex', _CONVERT_SRC_HEX_DFLT)
+        # convert all selected numbers
+        for sel in view.sel():
+            try:
+                # expand selection to word
+                if sel.empty():
+                    sel = view.word(sel)
+                    # if source is single quoted, expand selection
+                    # by one more character before and after the word.
+                    if r.pattern[0] == '\'':
+                        sel.a -= 1
+                        sel.b += 1
+
+                # remove whitespace within (to convert aligned blocks of hex numbers)
+                joined = ''.join(view.substr(sel).split())
+                # validate selection
+                match = r.match(joined)
+                # convert to decimal
+                epoch = float(int(match.group(1), 16))
+                # convert to UTC timestamp
+                timestamp = datetime.utcfromtimestamp(epoch)
+                # format nicely
+                ts_string = timestamp.strftime("%Y-%m-%d %H:%M:%S")
+                # replace selection with the result
+                view.replace(edit, sel, str(ts_string))
+
+            except:
+                num_skip += 1
+
+        # show number of invalid values
+        if num_skip > 0:
+            sublime.status_message(
+                "Skipped %d invalid hexadecimal value(s)!" % num_skip)
+
+
 
 
 class ExpToDecCommand(sublime_plugin.TextCommand):
